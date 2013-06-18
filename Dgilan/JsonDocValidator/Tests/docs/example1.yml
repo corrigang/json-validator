@@ -1,0 +1,39 @@
+_fields:
+    response:
+        _fields:
+            status_code:
+                _pattern: \d+
+                _available_values: 200
+            record_count:
+                _pattern: \d+
+            cdoc_count:
+                _pattern: \d+
+    rows:
+        _required: true
+        _type: array
+        _empty: true
+        _fields:
+            name: ""
+            project:
+                _fields:
+                    name: ""
+                    number: ""
+                    cinx_id: ""
+            vendors:
+                _type: array
+                _fields:
+                    name: ""
+                    org_contacts:
+                        _type: array
+                        _fields:
+                             name: ""
+                             cinx_id: ""
+                             _fields:
+                                     type: ""
+                                     domain: ""
+                                     id: ""
+            cinx_id:
+                _fields:
+                    type: ""
+                    domain: ""
+                    id: ""
