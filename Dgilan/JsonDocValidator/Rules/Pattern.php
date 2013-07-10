@@ -49,8 +49,10 @@ class Pattern extends RuleAbstract
         $checkedValue = $node->getValue();
 
         if (is_null($checkedValue)) {
-            $node->setError('The field does not support "'.$this->getName().'" rule');
-        } elseif (!preg_match('/^'.$pattern.'$/', $checkedValue, $match)) {
+            $checkedValue = '';
+        }
+
+        if (!preg_match('/^'.$pattern.'$/', $checkedValue, $match)) {
             $node->setError(
                 sprintf(
                     'The field does not match "%s", current value is "%s"',

@@ -8,11 +8,12 @@ class RulePatternTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider provider
+     * @group rules
      */
     public function testValidation($target, $pattern, $isValidate)
     {
         $inputString = <<<EOD
-{"response":"abracadabra","rows":"abra 4444J", "code":200, "cdoc":"ggg", "newOne":0}
+{"response":"abracadabra","rows":"abra 4444J", "code":200, "cdoc":"ggg", "newOne":0, "testNull":null}
 EOD;
         $node        = new Node(json_decode($inputString));
         $rule        = new Pattern();
@@ -37,6 +38,7 @@ EOD;
             array('code', '\d+', true),
             array('cdoc', '\d+', false),
             array('newOne', '\d+', true),
+            array('testNull', '^(\d+)|$', true),
         );
     }
 }

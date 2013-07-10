@@ -109,6 +109,9 @@ class Result
             $errors = $this->getNodeErrors($value);
             if (count($errors)) {
                 $result[$name] = $this->getNodeErrors($value);
+                if ('array' === $node->getType()) {
+                    break;
+                }
             }
         }
         return $result;
